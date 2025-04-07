@@ -1,0 +1,134 @@
+/* 
+    لا تنسوني من صالح دعائكم❤️
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400&display=swap');
+
+:root {
+  --size: 200px;
+  --depth: 130px;
+  --translateY: 29.4%;
+  --delay-base: 1.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: #000;
+  display: grid;
+  place-content: center;
+  perspective: 1000px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.container {
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(90deg) rotateY(-36deg);
+  animation: play 12.5s infinite cubic-bezier(1, 0, 0, 1);
+  animation-delay: 1s;
+  will-change: transform;
+}
+
+.polygon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #0009;
+  color: #111;
+  clip-path: polygon(50% 0%, 97.55% 34.55%, 79.39% 90.45%, 20.61% 90.45%, 2.45% 34.55%);
+  display: grid;
+  place-content: center;
+  font-size: 1.2em;
+  text-align: center;
+  padding: 45px;
+  z-index: 1;
+  animation: show 1s 1;
+  animation-delay: calc(var(--t) * var(--delay-base) + 12.5s);
+}
+
+.polygon::before,
+.polygon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3D(-50%, -50%, 0.1px);
+  width: 90%;
+  height: 90%;
+  clip-path: inherit;
+  z-index: -1;
+}
+
+.polygon::before {
+  background: linear-gradient(to left, #F90, #0F9, #F90);
+  animation: before 1s forwards;
+  animation-delay: calc(var(--t) * var(--delay-base) + 12.5s);
+}
+
+.polygon::after {
+  transform: translate3D(-50%, -50%, 0.2px);
+  width: 80%;
+  height: 80%;
+  background: #111;
+  animation: after 1s 25.5s forwards;
+}
+
+.polygon.backBase {
+  transform: rotateX(270deg) translateZ(calc(var(--depth) + 1px)) rotateZ(36deg);
+}
+
+.polygon.frontBase {
+  transform: rotateX(90deg) translateZ(var(--depth)) rotateZ(36deg);
+}
+
+.polygon.back {
+  transform: translateY(var(--translateY)) rotateY(calc(var(--deg) * 72deg)) translateZ(117px) rotateX(333.33deg);
+}
+
+.polygon.front {
+  transform: rotateZ(180deg) translateY(var(--translateY)) rotateY(calc(var(--deg) * -36deg)) translateZ(117px) rotateX(333.33deg);
+}
+
+/* Animations */
+@keyframes play {
+  0% { transform: rotateX(90deg) rotateY(-36deg); }
+  8.3% { transform: rotateX(27deg) rotateY(0deg); }
+  16.6% { transform: rotateX(27deg) rotateY(-72deg); }
+  24.9% { transform: rotateX(27deg) rotateY(-144deg); }
+  33.3% { transform: rotateX(27deg) rotateY(-216deg); }
+  41.6% { transform: rotateX(27deg) rotateY(-288deg); }
+  49.9% { transform: rotateX(270deg) rotateY(36deg); }
+  58.3% { transform: rotateX(206.5deg) rotateY(144deg); }
+  66.6% { transform: rotateX(206.5deg) rotateY(72deg); }
+  74.9% { transform: rotateX(206.5deg) rotateY(0deg); }
+  83.3% { transform: rotateX(206.5deg) rotateY(-72deg); }
+  91.6% { transform: rotateX(206.5deg) rotateY(-144deg); }
+  100% { transform: rotateX(90deg) rotateY(-36deg); }
+}
+
+@keyframes show {
+  to { color: #fff; }
+}
+
+@keyframes before {
+  to {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes after {
+  to { background: #fff; }
+}
+
+/* 
+    لا تنسوني من صالح دعائكم❤️
+*/
